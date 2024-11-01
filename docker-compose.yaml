@@ -1,14 +1,15 @@
 services:
   app:
     build: .
-    # ports:
-    #   - "8000:8000"
+    ports:
+      - ${PORT}:${PORT}
     command: >
       bash -c "python manage.py migrate --no-input &&
-               gunicorn ajhome.wsgi:application --bind 0.0.0.0:8000 --workers 4"
+               gunicorn ajhome.wsgi:application --bind 0.0.0.0:${PORT} --workers 4"
     volumes:
       - .:/app
     environment:
+      PORT: ${PORT}
       POSTGRES_DB: ${POSTGRES_DB}
       POSTGRES_USER: ${POSTGRES_USER}
       POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
