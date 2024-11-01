@@ -2,7 +2,6 @@ django
 pillow
 python-decouple
 gunicorn
-gevent>=1.4
 
 # for database
 
