@@ -44,7 +44,7 @@ ENV DJANGO_DEBUG=${DJANGO_DEBUG}
 # run any other commands that do not need the database
 # such as:
 # whitenoise -> s3
-
+WORKDIR /app/src
 # set the Django default project name
 ARG PROJ_NAME="ajhome"
 
