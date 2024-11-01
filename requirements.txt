@@ -1,0 +1,10 @@
+django
+pillow
+python-decouple
+gunicorn
+
+# for database
+
+dj-database-url
+psycopg[binary]
+
