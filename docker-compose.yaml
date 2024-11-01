@@ -1,18 +1,13 @@
 services:
-  web:
-    build:
-      context: .
-      dockerfile: Dockerfile
-    args:
-      DJANGO_SECRET_KEY: ${DJANGO_SECRET_KEY}
-      DJANGO_DEBUG: ${DJANGO_DEBUG}
+  app:
+    build: .
     ports:
       - ${PORT}:${PORT}
-    # command: >
-    #   bash -c "python manage.py migrate --no-input &&
-    #            gunicorn ajhome.wsgi:application --bind 0.0.0.0:${PORT} --workers 4"
-    # volumes:
-    #   - .:/app
+    command: >
+      bash -c "python manage.py migrate --no-input &&
+               gunicorn ajhome.wsgi:application --bind 0.0.0.0:${PORT} --workers 4"
+    volumes:
+      - .:/app
     environment:
       PORT: ${PORT}
       POSTGRES_DB: ${POSTGRES_DB}
